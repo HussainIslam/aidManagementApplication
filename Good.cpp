@@ -13,15 +13,17 @@ namespace aid {
     if (goodName != nullptr) {
         deallocateDynamicCString();
     }
-    if (strlen(src) <= max_name_length) {
-      goodName = new char[strlen(src) + 1];
-      strncpy(goodName, src, strlen(src));
-      goodName[strlen(src)] = '\0';
-    }
-    else {
-      goodName = new char[max_name_length + 1];
-      strncpy(goodName, src, max_name_length);
-      goodName[max_name_length] = '\0';
+    if (src != nullptr) {
+      if (strlen(src) <= max_name_length) {
+        goodName = new char[strlen(src) + 1];
+        strncpy(goodName, src, strlen(src));
+        goodName[strlen(src)] = '\0';
+      }
+      else {
+        goodName = new char[max_name_length + 1];
+        strncpy(goodName, src, max_name_length);
+        goodName[max_name_length] = '\0';
+      }
     }
   }
 
@@ -99,6 +101,9 @@ namespace aid {
   }
 
   Good::Good(const char* skUnit, const char* name, const char* unit, int onHand, bool tax, double priceBT, int quantNeeded) {
+    if (typeOfGood != 'N' || typeOfGood != 'P') {
+      *this = Good();
+    }
     copyStaticCString(stockKeepingUnit, skUnit, max_sku_length);
     copyStaticCString(goodUnit, unit, max_unit_length);
     createDynamicCString(goodName, name);
@@ -106,7 +111,7 @@ namespace aid {
     goodNeeded = quantNeeded;
     unitPrice_BT = priceBT;
     taxable = tax;
-    typeOfGood = 'N';
+    //typeOfGood = 'N';
   }
 
   Good::Good(const Good& src) {
@@ -203,8 +208,8 @@ namespace aid {
         else {
           os << "N/A" << endl;
         }
-        os << "Quantity on hand: " << goodOnHand << endl;
-        os << "Quantity needed: " << goodNeeded << endl;
+        os << " Quantity on hand: " << goodOnHand << " " << goodUnit << endl;
+        os << " Quantity needed: " << goodNeeded << endl;
       }
     }
 

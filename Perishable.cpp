@@ -2,13 +2,11 @@
 
 namespace aid {
 
-  Perishable::Perishable(): Good('P') {
-
+  Perishable::Perishable() : Good('P') {
+    
   }
 
-  Perishable::~Perishable() {
-
-  }
+  Perishable::~Perishable() {};
 
   std::fstream& Perishable::store(std::fstream& file, bool newLine) const {
     Good::store(file, false);
@@ -31,7 +29,7 @@ namespace aid {
     Good::write(os, linear);
   
     if (isClear() && !isEmpty()) {
-      linear ? os << expiryDate : (os << "Expiry date: " << expiryDate << endl);
+      linear ? os << expiryDate : (os << " Expiry date: " << expiryDate << endl);
     }
     /*Good::write(os, linear);
     if (!isClear() || !expiryDate.isEmpty()) {
