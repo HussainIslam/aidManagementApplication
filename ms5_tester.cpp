@@ -29,8 +29,8 @@ using namespace std;
 using namespace aid;
 
 int main() {
-  //testGood();
-  //cout << endl;
+  testGood();
+  cout << endl;
   testPerishable();
 }
 
@@ -159,7 +159,7 @@ void testPerishable() {
   iGood* perishable = CreatePerishable();
   bool ok = true;
   cout << "--Perishable Good test:" << endl;
-  /*if (ok) {
+  if (ok) {
     cout << "----Expiry date Validation test:" << endl;
     promptUser("abc", "abc", "abc", 'n', "10", "10", "10", "10/1/1");
     cin >> *perishable;
@@ -175,8 +175,8 @@ void testPerishable() {
     }
     cin.ignore(2000, '\n');
   }
-  pause_();*/
-  /*if (ok) {
+  pause_();
+  if (ok) {
     cout << "----Display test, the output of the Program and yours must match:" << endl;
     promptUser("1234", "water", "liter", 'n', "1.5", "1", "5", "2018/06/30");
     cin >> *perishable;
@@ -192,7 +192,7 @@ void testPerishable() {
     }
     cin.ignore(2000, '\n');
   }
-  pause_();*/
+  pause_();
   if (ok) {
     cout << "----Display test, the output of the Program and yours must match:" << endl;
     promptUser("1234", "water", "liter", 'n', "1.5", "1", "5", "2018/12/30");

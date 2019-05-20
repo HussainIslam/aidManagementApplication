@@ -29,17 +29,14 @@ namespace aid {
     Good::write(os, linear);
   
     if (isClear() && !isEmpty()) {
-      linear ? os << expiryDate : (os << " Expiry date: " << expiryDate << endl);
+      linear ? os << expiryDate : (os << "\n Expiry date: " << expiryDate);
     }
-    /*Good::write(os, linear);
-    if (!isClear() || !expiryDate.isEmpty()) {
-      linear ? (os << expiryDate) : (os << "Expiry date: " << expiryDate << endl);
-    }*/
     return os;
   }
 
   std::istream& Perishable::read(std::istream& is) {
-    Good::read(is);
+    this->Good::read(is);
+    this->typeSetter('P');
     Date temp;
     if (!is.fail()) {
       cout << " Expiry date (YYYY/MM/DD): ";
@@ -51,9 +48,11 @@ namespace aid {
       else if (temp.errCode() == DAY_ERROR) this->message("Invalid Day in Date Entry");
       else if (temp.errCode() == MON_ERROR) this->message("Invalid Month in Date Entry");
       else if (temp.errCode() == YEAR_ERROR) this->message("Invalid Year in Date Entry");
+      else this->message("Invalid Expiry in Date Entry");
     }
     else {
       this->expiryDate = temp;
+      //is.clear();
     }
 
     return is;
@@ -61,5 +60,9 @@ namespace aid {
 
   const Date& Perishable::expiry() const {
     return expiryDate;
+  }
+
+  void Perishable::typeSetter(char type) {
+    Good::typeSetter(type);
   }
 }

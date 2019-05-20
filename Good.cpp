@@ -206,13 +206,15 @@ namespace aid {
           os << itemCost() << endl;
         }
         else {
-          os << "N/A" << endl;
+          os << " N/A" << endl;
         }
-        os << " Quantity on hand: " << goodOnHand << " " << goodUnit << endl;
-        os << " Quantity needed: " << goodNeeded << endl;
+        os << " Quantity on Hand: " << goodOnHand << " " << goodUnit << endl;
+        os << " Quantity needed: " << goodNeeded;
       }
     }
-
+    os.clear();
+    
+    
     return os;
   }
 
@@ -267,10 +269,15 @@ namespace aid {
         errorState_.message("Invalid Quantity Needed Entry");
       }
     }
+    if (!is.fail()) {
+      is.clear();
+      is.ignore(1000, '\n');
+    }
 
     //if (!(is.fail())) {
     *this = Good(sku_, name_, unit_, qHand_, taxable_, price_, qNeeded_);
     this->errorState.message(errorState_.message());
+
     //}
     return is;
   }
@@ -336,5 +343,8 @@ namespace aid {
     return src.total_cost() + additionalCost;
   }
 
+  void Good::typeSetter(char type) {
+    typeOfGood = type;
+  }
 
 }

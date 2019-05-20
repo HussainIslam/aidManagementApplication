@@ -17,7 +17,8 @@ namespace aid {
     std::ostream& write(std::ostream& os, bool linear) const;
     std::istream& read(std::istream& is);
     const Date& expiry() const;
-
+    //supporting member function
+    void typeSetter(char);
   };
 }
 

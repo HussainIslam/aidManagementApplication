@@ -35,6 +35,8 @@ namespace aid {
     double itemCost() const;
     void message(const char*);
     bool isClear() const;
+    //supporting member function
+    virtual void typeSetter(char);
 
   public:
     Good(char goodType = 'N');
