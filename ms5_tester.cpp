@@ -1,22 +1,3 @@
-// Final Project - Milestone 5
-// ms5_tester.cpp
-// Version 3.4
-// Date	2018/10/18
-// Authors:	Chris Szalwinski, Fardad Soleimanloo
-//
-// For your final test before submission:
-//      DO NOT MODIFY THIS FILE IN ANY WAY
-//
-// Revision History
-// -----------------------------------------------------------
-// Name               Date                 Reason
-// Chris              2017/12/16           name changes for Fall
-// Chris              2018/01/25           Good name changes
-// Chris              2018/02/07           I/O Alignments
-// Chris              2018-03-03           Message -> State
-// Chris              2018-03-11           align with specs
-// Chris              2018-10-18           fall 2018
-/////////////////////////////////////////////////////////////////
 #include "iGood.h"
 void testPerishable();
 void testGood();
